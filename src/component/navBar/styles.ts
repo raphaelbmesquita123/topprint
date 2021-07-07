@@ -75,7 +75,8 @@ export const ModalContainer = styled.div`
 
     section{
         width: 18rem;
-        padding: 1rem;
+
+
         h1{
             color: var(--white);
             font-size: 2rem;
@@ -84,20 +85,11 @@ export const ModalContainer = styled.div`
         form{
             display: flex;
             flex-direction: column;
-            label{
-
-                input{
-                    width: 100%;
-                    padding: 1rem;
-                    border: none;
-                    margin-top: 1rem;
-                }
-            }
 
             button{
                 align-self: flex-end;
                 padding: 0.5rem;
-                margin-top: 1rem;
+                margin-top: 0.6rem;
                 border: none;
                 color: var(--white);
                 background: var(--darkblue);
@@ -105,10 +97,9 @@ export const ModalContainer = styled.div`
         }
     }
 
-    div{
-        margin-bottom: 2rem;
+    .loginContainer{
         width: 18rem;
-        padding: 1rem;
+
         h1{
             color: var(--white);
             font-size: 2rem;
@@ -122,7 +113,7 @@ export const ModalContainer = styled.div`
                     width: 100%;
                     padding: 1rem;
                     border: none;
-                    margin-top: 1rem;
+                    margin-top: 0.6rem;
                 }
             }
 
@@ -142,5 +133,7 @@ export const ModalContainer = styled.div`
         top:1rem;
         right: 1rem;
         color: var(--white);
+        cursor: pointer;
     }
 `
+

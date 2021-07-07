@@ -4,10 +4,24 @@ import React from 'react';
 import { CardLona } from '../component/cardLona/cardLona';
 import { CardStick } from '../component/cardStick/cardStick';
 import { Banner, Container, ContainerAttention } from '../styles/home'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
+      <ToastContainer />
       <Head>
         <title>Top Print</title>
       </Head>
