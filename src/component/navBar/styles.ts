@@ -11,6 +11,7 @@ export const Nav = styled.nav`
 
     img{
         height: 2rem;
+        cursor: pointer;
     }
 
     div{
@@ -23,6 +24,7 @@ export const Nav = styled.nav`
                 text-decoration: none;
                 list-style: none;
                 color: var(--gray-300);
+                cursor: pointer;
 
                 &:first-child {
                     margin-right: 1rem;
@@ -58,5 +60,87 @@ export const Nav = styled.nav`
                 color: white;
             }
         }
+    }
+`
+
+export const ModalContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: var(--blue);
+
+    section{
+        width: 18rem;
+        padding: 1rem;
+        h1{
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            label{
+
+                input{
+                    width: 100%;
+                    padding: 1rem;
+                    border: none;
+                    margin-top: 1rem;
+                }
+            }
+
+            button{
+                align-self: flex-end;
+                padding: 0.5rem;
+                margin-top: 1rem;
+                border: none;
+                color: var(--white);
+                background: var(--darkblue);
+            }
+        }
+    }
+
+    div{
+        margin-bottom: 2rem;
+        width: 18rem;
+        padding: 1rem;
+        h1{
+            color: var(--white);
+            font-size: 2rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            label{
+
+                input{
+                    width: 100%;
+                    padding: 1rem;
+                    border: none;
+                    margin-top: 1rem;
+                }
+            }
+
+            button{
+                align-self: flex-end;
+                padding: 0.5rem;
+                margin-top: 1rem;
+                border: none;
+                color: var(--white);
+                background: var(--darkblue);
+            }
+        }
+    }
+
+    .closeModal{
+        position: absolute;
+        top:1rem;
+        right: 1rem;
+        color: var(--white);
     }
 `

@@ -1,11 +1,11 @@
 import { FormEvent } from 'react'
 import { ContainerLona } from './styles'
 
-export function CardLona () {
-    function formSubmit (event: FormEvent) {
-        event.preventDefault()
-        console.log(event)
-    }
+    export function CardLona () {
+        function formSubmit (event: FormEvent) {
+            event.preventDefault()
+            console.log(event)
+        }
 
     return(
         <ContainerLona>
@@ -14,7 +14,7 @@ export function CardLona () {
             <form onSubmit={(event) => formSubmit(event)}>
                 <h3>Lona de alguma coisa impressa por maquina tal com acabamento de alta qualidade</h3>
                 <label htmlFor="largura">Largura: <input type="number" min='0' required/> cm</label>
-                <label htmlFor="altura">Altura: <input type="number" required/> cm</label>
+                <label htmlFor="altura">Altura: <input type="number" min='0' required/> cm</label>
                 <label htmlFor="substrato" >Substrato:
                     <select name="substrato" id="" required>
                         <option value="420">420</option>
