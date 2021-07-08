@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Nav = styled.nav`
+export const NavContainer = styled.nav`
     display: flex;
     max-width: 1080px;
     margin: 0 auto;
@@ -74,6 +74,7 @@ export const ModalContainer = styled.div`
     background-color: var(--blue);
 
     section{
+        position: relative;
         width: 18rem;
 
 
@@ -86,6 +87,13 @@ export const ModalContainer = styled.div`
             display: flex;
             flex-direction: column;
 
+            span{
+                position: absolute;
+                font-size: 0.8rem;
+                bottom: 1.4rem;
+                color: var(--white);
+                cursor: pointer;
+            }
             button{
                 align-self: flex-end;
                 padding: 0.5rem;
@@ -98,6 +106,7 @@ export const ModalContainer = styled.div`
     }
 
     .loginContainer{
+        position: relative;
         width: 18rem;
 
         h1{
@@ -116,7 +125,13 @@ export const ModalContainer = styled.div`
                     margin-top: 0.6rem;
                 }
             }
-
+            span{
+                position: absolute;
+                font-size: 0.8rem;
+                bottom: 1.8rem;
+                color: var(--white);
+                cursor: pointer;
+            }
             button{
                 align-self: flex-end;
                 padding: 0.5rem;

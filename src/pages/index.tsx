@@ -6,6 +6,7 @@ import { CardStick } from '../component/cardStick/cardStick';
 import { Banner, Container, ContainerAttention } from '../styles/home'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { GetStaticProps } from 'next';
 
 export default function Home() {
   return (
@@ -43,4 +44,14 @@ export default function Home() {
       </ContainerAttention>
     </div>
   )
+}
+
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  return {
+    props: {
+
+    }
+  }
 }
