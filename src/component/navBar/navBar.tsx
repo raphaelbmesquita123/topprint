@@ -32,13 +32,12 @@ const customStyles = {
 type CreateUserAccount = {
     email: string
     password: string
-    password_confirmation: string
-  }
+    }
 
 type SignIn = {
-email: string
-password: string
-}
+    email: string
+    password: string
+    }
 
 const createUserAccountSchema = yup.object().shape({
     email: yup.string().required('E-mail required').email('Invalid E-mail'),
@@ -61,6 +60,7 @@ export function NavBar () {
         resolver: yupResolver(createUserAccountSchema)
     })
 
+
     const handleCreateUser: SubmitHandler<CreateUserAccount> = async (values) => {
         try {
             await auth.createUserWithEmailAndPassword(
@@ -70,18 +70,24 @@ export function NavBar () {
             toast.success('Conta criada com sucesso!')
             setCreateAccount(false)
         } catch (error) {
-            console.error(error);
+            if( error.code === 'auth/email-already-in-use'){
+                toast.error('E-mail já ultilizado')
+            }
         }
     }
 
     const handleSignIn: SubmitHandler<SignIn>  = async (values) => {
         try {
+            console.log(values.email, values.password)
             await auth.signInWithEmailAndPassword(
                 values.email, 
                 values.password
-            );
+            )
+            
             toast.success('Seja bem Vindo!')
+
             closeModal()
+
         } catch (error){
             console.log(error)
             toast.error('Email ou Senha Errada!')
@@ -110,10 +116,8 @@ export function NavBar () {
             <Link href="/">
                 <li>Ajuda</li>
             </Link>
-
                 <li onClick={openModal} >Minha Conta</li>
             </ul>
-
         </div>
         <Link href='/basket' >
             <div className="icon">
@@ -137,7 +141,9 @@ export function NavBar () {
                         createAccount? 
                         <section>
                             <h1>Criar Conta</h1>
-                            <form onSubmit={handleSubmit(handleCreateUser)}>
+                            <form 
+                                onSubmit={handleSubmit(handleCreateUser)}
+                                >
                                 <label htmlFor="email">
                                     <TextField 
                                         name="email"
@@ -147,7 +153,6 @@ export function NavBar () {
                                         {...register('email')}
                                     />
                                 </label>
-
                                 <label htmlFor="password">
                                     <TextField 
                                         name="password"
@@ -167,36 +172,39 @@ export function NavBar () {
                                     />
                                 </label>
                                 <span onClick={() => setCreateAccount(false)}>LOGIN</span>
-                                <button type="submit" onClick={() => handleCreateUser}>Criar Conta</button>
+                                <button type="submit">Criar Conta</button>
                             </form>
                         </section> 
                         :
                         <section className="loginContainer">
                             <h1>Login</h1>
-
-                            <form onSubmit={() => handleSubmit(handleSignIn)}>
+                            <form 
+                                onSubmit={handleSubmit(handleSignIn)}
+                            >
                                 <label htmlFor="email">
-                                    <input 
+                                    <TextField 
+                                        name="email"
                                         type="email" 
                                         placeholder="E-mail"
-                                        required/>
-                                        
+                                        error={formState.errors.email}
+                                        {...register('email')}
+                                    />
                                 </label>
                                 <label htmlFor="password">
-                                    <input 
+                                    <TextField 
+                                        name="password"
                                         type="password" 
-                                        placeholder="Senha" 
-                                        required/>
+                                        placeholder="Password"
+                                        error={formState.errors.password}
+                                        {...register('password')}
+                                    />
                                 </label>
                                 <span onClick={() => setCreateAccount(true)}>CRIAR CONTA</span>
 
-                                <button type="submit" onClick={() => handleSignIn}>Entrar</button>
+                                <button type="submit">Entrar</button>
                             </form>
                         </section>
                     }
-                    
-
-                    
                     <FaWindowClose 
                         className='closeModal'
                         onClick={closeModal} />
