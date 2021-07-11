@@ -84,7 +84,6 @@ export function NavBar () {
             closeModal()
 
         } catch (error){
-            console.log(error)
             toast.error('Email ou Senha Errada!')
         }
     };
@@ -100,6 +99,9 @@ export function NavBar () {
     function closeModal() {
       setIsOpen(false);
     }
+
+
+
 
     return (
     <NavContainer>

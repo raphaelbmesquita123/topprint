@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
+// require('.env/config')
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAYY17n6F8SqUJOKVNBF0usQCJXsrnenWE",
@@ -15,6 +16,5 @@ export const firebaseConfig = {
   if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
-  // firebase.analytics();
 
 export const auth = firebase.auth();
