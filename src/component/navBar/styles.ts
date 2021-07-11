@@ -2,65 +2,93 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
     display: flex;
-    max-width: 1080px;
+    max-width: 1000px;
     margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
     height: 4rem;
+    padding: 0rem 2rem;
 
-    img{
-        height: 2rem;
-        cursor: pointer;
-    }
-
-    div{
+    section{
         display: flex;
-
-        ul{
-            display: flex;
-
-            li{
-                text-decoration: none;
-                list-style: none;
-                color: var(--gray-300);
-                cursor: pointer;
-
-                &:first-child {
-                    margin-right: 1rem;
-                }
-
-                &:hover {
-                    color: var(--blue)
-                }
-            }
+        width:100%;
+        justify-content: space-around;
+        align-items: center;
+    
+        img{
+            height: 2rem;
+            cursor: pointer;
         }
 
-    }
-    .icon{
-        position: relative;
-        cursor: pointer;
-        font-size: 1.5rem;
-        color: var(--gray-300);
+        .navigation{
 
-        div{
+            ul{
+                display: flex;
+
+                li{
+                    text-decoration: none;
+                    list-style: none;
+                    color: var(--gray-300);
+                    cursor: pointer;
+
+                    &:first-child {
+                        margin-right: 1rem;
+                    }
+
+                    &:hover {
+                        color: var(--blue)
+                    }
+                }
+            }
+
+        }
+
+        .userLoged{
             display: flex;
-            justify-content: center;
             align-items: center;
-            position: absolute;
-            background: var(--blue);
-            width: 1.3rem;
-            height: 1.3rem;
-            border-radius: 100%;
-            top: -10px;
-            right: -10px;
-            span{
+            font-size: 0.9rem;
+            background-color: var(--blue);
+            padding: 0.5rem;
+            color: white;
+            cursor: pointer;
+            small {
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width:650px ){
+            .userLoged{
+                position: absolute;
+                top: 4rem;
+                right: 2rem;
+            }
+        }
+
+        .shopCart{
+            display: flex;
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--gray-300);
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                background: var(--blue);
+                width: 1.3rem;
+                height: 1.3rem;
+                border-radius: 100%;
+                top: -10px;
+                right: -10px;
                 
-                font-size: 0.7rem;
-                color: white;
+                span{
+                    font-size: 0.7rem;
+                    color: white;
+                }
             }
         }
     }
+
 `
 
 export const ModalContainer = styled.div`

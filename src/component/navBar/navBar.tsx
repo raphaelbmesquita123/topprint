@@ -2,7 +2,7 @@ import { NavContainer, ModalContainer } from './styles'
 import { FaShoppingCart, FaWindowClose } from "react-icons/fa";
 import Link  from 'next/link';
 import Modal from 'react-modal';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -13,8 +13,7 @@ import { toast } from 'react-toastify';
 
 import { auth } from "../../services/firebase";
 import { AuthContext } from '../../context/AuthContext';
-
-// import { useAuth } from '../../provider/AuthProvider';
+;
 
 const customStyles = {
   content: {
@@ -54,12 +53,11 @@ export function NavBar () {
 
     const { user } = useContext(AuthContext);
 
-    console.log(user)
+
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(createUserAccountSchema)
     })
-
 
     const handleCreateUser: SubmitHandler<CreateUserAccount> = async (values) => {
         try {
@@ -78,14 +76,11 @@ export function NavBar () {
 
     const handleSignIn: SubmitHandler<SignIn>  = async (values) => {
         try {
-            console.log(values.email, values.password)
             await auth.signInWithEmailAndPassword(
                 values.email, 
                 values.password
             )
-            
             toast.success('Seja bem Vindo!')
-
             closeModal()
 
         } catch (error){
@@ -96,6 +91,7 @@ export function NavBar () {
 
     const handleSignOut = async () => {
         await auth.signOut();
+        console.log('oi')
     };
 
     function openModal() {
@@ -107,11 +103,13 @@ export function NavBar () {
 
     return (
     <NavContainer>
+        <section>
+
         <Link href='/'>
             <img src="./logo.png" alt="topprint-logo" />
         </Link>
 
-        <div>
+        <div className="navigation">
             <ul>
             <Link href="/">
                 <li>Ajuda</li>
@@ -119,8 +117,20 @@ export function NavBar () {
                 <li onClick={openModal} >Minha Conta</li>
             </ul>
         </div>
+
+        {user ? 
+            <div className="userLoged">
+                <small>
+                    {user.email}
+                </small>
+                <FaWindowClose onClick={handleSignOut}/>
+            </div>
+            :
+            ''
+        }
+
         <Link href='/basket' >
-            <div className="icon">
+            <div className="shopCart">
                     <FaShoppingCart />
                 <div>
                 <span>1</span>
@@ -128,6 +138,7 @@ export function NavBar () {
             </div>
         </Link>
 
+        </section>
         <div>
             <Modal
                 isOpen={modalIsOpen}
