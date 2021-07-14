@@ -156,21 +156,40 @@ export const ModalContainer = styled.div`
             span{
                 position: absolute;
                 font-size: 0.8rem;
-                bottom: 1.8rem;
                 color: var(--white);
                 cursor: pointer;
+                margin-top: 3rem;
+                z-index: 2;
+                bottom: -2rem;
             }
             button{
                 align-self: flex-end;
                 padding: 0.5rem;
-                margin-top: 1rem;
+                margin-top: -2rem;
                 border: none;
                 color: var(--white);
                 background: var(--darkblue);
             }
         }
     }
+    .googleLogin{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 11rem;
+        margin-top:1rem;
+        cursor: pointer;
+        background-color: var(--gray-100);
+        padding: 0.4rem;
+        img{
+            width: 1.5rem;
+        }
 
+        p{
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+    }
     .closeModal{
         position: absolute;
         top:1rem;

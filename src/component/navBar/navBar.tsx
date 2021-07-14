@@ -13,7 +13,8 @@ import { toast } from 'react-toastify';
 
 import { auth } from "../../services/firebase";
 import { AuthContext } from '../../context/AuthContext';
-;
+import firebase from 'firebase';
+
 
 const customStyles = {
   content: {
@@ -88,6 +89,21 @@ export function NavBar () {
         }
     };
 
+    const googleSignIn = () => {
+        console.log('clicked')
+        try {
+            const provider = new firebase.auth.GoogleAuthProvider()
+            auth.signInWithPopup(
+                provider
+            )
+            toast.success('Seja bem Vindo!')
+            closeModal()
+
+        } catch (error){
+            toast.error('Email não autorizado!')
+        }
+    }
+
     const handleSignOut = async () => {
         await auth.signOut();
         console.log('oi')
@@ -131,7 +147,7 @@ export function NavBar () {
             ''
         }
 
-        <Link href='/basket' >
+        <Link href='/cart' >
             <div className="shopCart">
                     <FaShoppingCart />
                 <div>
@@ -212,9 +228,16 @@ export function NavBar () {
                                         {...register('password')}
                                     />
                                 </label>
+                                <div className='googleLogin' onClick={googleSignIn}> 
+                                    <img 
+                                        src="/google.png" 
+                                        alt="Login com Google" 
+                                        />
+                                    <p>Login com google</p>
+                                </div>
                                 <span onClick={() => setCreateAccount(true)}>CRIAR CONTA</span>
-
                                 <button type="submit">Entrar</button>
+                                
                             </form>
                         </section>
                     }
