@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 import { auth } from "../../services/firebase";
 import { AuthContext } from '../../context/AuthContext';
 import firebase from 'firebase';
+import { useCart } from '../../provider/CartProvider';
 
 
 const customStyles = {
@@ -53,7 +54,7 @@ export function NavBar () {
     const [ modalIsOpen, setIsOpen ] = useState(false);
 
     const { user } = useContext(AuthContext);
-
+    const { cart } = useCart()
 
 
     const { register, handleSubmit, formState } = useForm({
@@ -132,7 +133,11 @@ export function NavBar () {
             <Link href="/">
                 <li>Ajuda</li>
             </Link>
+            { user === null ? 
                 <li onClick={openModal} >Minha Conta</li>
+            :
+             ''
+            }
             </ul>
         </div>
 
@@ -151,7 +156,7 @@ export function NavBar () {
             <div className="shopCart">
                     <FaShoppingCart />
                 <div>
-                <span>1</span>
+                    <span>{cart.length}</span>
                 </div>
             </div>
         </Link>
